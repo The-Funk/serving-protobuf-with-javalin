@@ -1,5 +1,6 @@
 package app.control;
 
+import app.model.dao.FakeDao;
 import app.model.objects.pojo.SensorData;
 import io.javalin.http.Handler;
 
@@ -16,16 +17,8 @@ public class SensorController {
         try {
             if(permissions){
                 // Here's where you'd get your SensorData from your DB or device, etc.
-                SensorData sData = new SensorData();
-                sData.setID(1);
-                sData.setMake("DMC");
-                sData.setModel("Delorean");
-                sData.setDestinationYear(3030);
-                sData.setFluxCapacitorReading(4985.435);
-                sData.setClockSkewPicoSeconds(0.004);
-                sData.setLastCheckIn(Timestamp.from(Instant.now()));
-                sData.setToggleSwitchOn(true);
-                sData.setSafetyBeltsOn(true);
+                FakeDao dao = new FakeDao();
+                SensorData sData = dao.getSensorDataFromVehicleDB();
 
                 ctx.status(200);
                 ctx.contentType("application/x-protobuf");
@@ -43,16 +36,8 @@ public class SensorController {
         try {
             if(permissions){
                 // Here's where you'd get your SensorData from your DB or device, etc.
-                SensorData sData = new SensorData();
-                sData.setID(1);
-                sData.setMake("DMC");
-                sData.setModel("Delorean");
-                sData.setDestinationYear(3030);
-                sData.setFluxCapacitorReading(4985.435);
-                sData.setClockSkewPicoSeconds(0.004);
-                sData.setLastCheckIn(Timestamp.from(Instant.now()));
-                sData.setToggleSwitchOn(true);
-                sData.setSafetyBeltsOn(true);
+                FakeDao dao = new FakeDao();
+                SensorData sData = dao.getSensorDataFromVehicleDB();
 
                 ctx.status(200);
                 ctx.json(sData);

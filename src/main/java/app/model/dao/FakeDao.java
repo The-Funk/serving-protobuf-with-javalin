@@ -8,7 +8,7 @@ public class FakeDao {
 
     public FakeDao(){}
 
-    SensorData getSensorDataFromVehicleDB(){
+    public SensorData getSensorDataFromVehicleDB(){
         SensorData data = new SensorData();
         data.setID(1);
         data.setMake("DMC");
