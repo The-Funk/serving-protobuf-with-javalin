@@ -1,10 +1,12 @@
 syntax = "proto3";
+// The package directive (when generating Java src files) tells protoc where to store the generated Java files
 package app.model.objects.generated;
 
 import "google/protobuf/timestamp.proto";
 
 // proto standard says field names should be lower_snake_case
-// except enums which should be SCREAMING_SNAKE_CASE
+// except enum values which should be SCREAMING_SNAKE_CASE
+// TODO: DELETE THIS LINE TO TRIGGER A GIT MODIFY EVENT
 
 message SensorData {
   int32 id = 1;

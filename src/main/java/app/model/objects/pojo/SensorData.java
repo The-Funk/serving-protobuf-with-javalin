@@ -1,8 +1,10 @@
 package app.model.objects.pojo;
 
+import app.model.objects.generated.SensorDataOuterClass;
+
 import java.sql.Timestamp;
 
-public class SensorData implements Bufferable<SensorData>{
+public class SensorData implements Bufferable<SensorDataOuterClass.SensorData>{
 
     private int ID;
     private String make;
@@ -42,4 +44,15 @@ public class SensorData implements Bufferable<SensorData>{
     public void setSafetyBeltsOn(boolean safetyBeltsOn) { this.safetyBeltsOn = safetyBeltsOn; }
 
 
+    @Override
+    public SensorDataOuterClass.SensorData toBuffer() {
+        SensorDataOuterClass.SensorData.Builder builder = SensorDataOuterClass.SensorData.newBuilder();
+        builder.setId(ID)
+                .setFluxCapacitorReading(fluxCapacitorReading)
+                .setClockSkewPicoSeconds(clockSkewPicoSeconds)
+                .setDestinationYear(destinationYear)
+                .setLastCheckIn()
+                .setToggleSwitchOn(toggleSwitchOn)
+                .setSafetyBeltsOn(safetyBeltsOn);
+    }
 }
