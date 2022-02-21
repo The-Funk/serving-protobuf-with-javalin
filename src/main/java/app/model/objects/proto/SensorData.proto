@@ -6,7 +6,6 @@ import "google/protobuf/timestamp.proto";
 
 // proto standard says field names should be lower_snake_case
 // except enum values which should be SCREAMING_SNAKE_CASE
-// TODO: DELETE THIS LINE TO TRIGGER A GIT MODIFY EVENT
 
 message SensorData {
   int32 id = 1;
