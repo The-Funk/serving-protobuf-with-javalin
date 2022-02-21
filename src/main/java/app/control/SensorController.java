@@ -4,9 +4,6 @@ import app.model.dao.FakeDao;
 import app.model.objects.pojo.SensorData;
 import io.javalin.http.Handler;
 
-import java.sql.Timestamp;
-import java.time.Instant;
-
 import static app.model.mappers.RouteMapper.getSensorDataResponse;
 
 public class SensorController {
