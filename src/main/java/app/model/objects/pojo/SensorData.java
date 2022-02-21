@@ -4,6 +4,8 @@ import app.model.objects.generated.SensorDataOuterClass;
 
 import java.sql.Timestamp;
 
+import static app.model.mappers.BaseMapper.sqltimeToProtoTime;
+
 public class SensorData implements Bufferable<SensorDataOuterClass.SensorData>{
 
     private int ID;
@@ -47,12 +49,24 @@ public class SensorData implements Bufferable<SensorDataOuterClass.SensorData>{
     @Override
     public SensorDataOuterClass.SensorData toBuffer() {
         SensorDataOuterClass.SensorData.Builder builder = SensorDataOuterClass.SensorData.newBuilder();
+
+        // Set all non-nullable values first
         builder.setId(ID)
                 .setFluxCapacitorReading(fluxCapacitorReading)
                 .setClockSkewPicoSeconds(clockSkewPicoSeconds)
                 .setDestinationYear(destinationYear)
-                .setLastCheckIn()
                 .setToggleSwitchOn(toggleSwitchOn)
                 .setSafetyBeltsOn(safetyBeltsOn);
+
+        // Demonstrates using Java optional for proto optionals, in this case we didn't specify the lastCheckIn to be optional in the proto
+        // so it could probably be assumed that the lastCheckIn will never be null in our datastore either, but this is just to showcase Optional
+        sqltimeToProtoTime(lastCheckIn).ifPresent(builder::setLastCheckIn);
+
+        // Demonstrates null string check for proto optionals, in this case make and model can be null in our proto
+        // so it can be assumed they could also be null in our datastore, thus we should check before setting them with our builder.
+        if(make != null){ builder.setMake(make); }
+        if(model != null){ builder.setModel(model); }
+
+        return builder.build();
     }
 }
