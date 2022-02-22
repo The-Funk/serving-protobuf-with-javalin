@@ -22,7 +22,7 @@ Cole Snyder AKA The-Funk
 
 ## License
 
-This project is unlicensed. Use it however you see fit.
+This project is licensed under the zero-condition "Unlicense". Use it however you see fit.
 
 ## Acknowledgments
 
