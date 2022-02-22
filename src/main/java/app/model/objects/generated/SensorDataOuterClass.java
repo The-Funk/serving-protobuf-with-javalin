@@ -19,86 +19,62 @@ public final class SensorDataOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 id = 1;</code>
-     * @return The id.
+     * <code>optional string make_and_model = 1;</code>
+     * @return Whether the makeAndModel field is set.
      */
-    int getId();
-
+    boolean hasMakeAndModel();
     /**
-     * <code>optional string make = 2;</code>
-     * @return Whether the make field is set.
+     * <code>optional string make_and_model = 1;</code>
+     * @return The makeAndModel.
      */
-    boolean hasMake();
+    java.lang.String getMakeAndModel();
     /**
-     * <code>optional string make = 2;</code>
-     * @return The make.
-     */
-    java.lang.String getMake();
-    /**
-     * <code>optional string make = 2;</code>
-     * @return The bytes for make.
+     * <code>optional string make_and_model = 1;</code>
+     * @return The bytes for makeAndModel.
      */
     com.google.protobuf.ByteString
-        getMakeBytes();
+        getMakeAndModelBytes();
 
     /**
-     * <code>optional string model = 3;</code>
-     * @return Whether the model field is set.
-     */
-    boolean hasModel();
-    /**
-     * <code>optional string model = 3;</code>
-     * @return The model.
-     */
-    java.lang.String getModel();
-    /**
-     * <code>optional string model = 3;</code>
-     * @return The bytes for model.
-     */
-    com.google.protobuf.ByteString
-        getModelBytes();
-
-    /**
-     * <code>double flux_capacitor_reading = 4;</code>
-     * @return The fluxCapacitorReading.
-     */
-    double getFluxCapacitorReading();
-
-    /**
-     * <code>double clock_skew_pico_seconds = 5;</code>
-     * @return The clockSkewPicoSeconds.
-     */
-    double getClockSkewPicoSeconds();
-
-    /**
-     * <code>int32 destination_year = 6;</code>
+     * <code>int32 destination_year = 2;</code>
      * @return The destinationYear.
      */
     int getDestinationYear();
 
     /**
-     * <code>.google.protobuf.Timestamp last_check_in = 7;</code>
+     * <code>repeated double flux_capacitor_readings = 3;</code>
+     * @return A list containing the fluxCapacitorReadings.
+     */
+    java.util.List<java.lang.Double> getFluxCapacitorReadingsList();
+    /**
+     * <code>repeated double flux_capacitor_readings = 3;</code>
+     * @return The count of fluxCapacitorReadings.
+     */
+    int getFluxCapacitorReadingsCount();
+    /**
+     * <code>repeated double flux_capacitor_readings = 3;</code>
+     * @param index The index of the element to return.
+     * @return The fluxCapacitorReadings at the given index.
+     */
+    double getFluxCapacitorReadings(int index);
+
+    /**
+     * <code>optional .google.protobuf.Timestamp last_check_in = 4;</code>
      * @return Whether the lastCheckIn field is set.
      */
     boolean hasLastCheckIn();
     /**
-     * <code>.google.protobuf.Timestamp last_check_in = 7;</code>
+     * <code>optional .google.protobuf.Timestamp last_check_in = 4;</code>
      * @return The lastCheckIn.
      */
     com.google.protobuf.Timestamp getLastCheckIn();
     /**
-     * <code>.google.protobuf.Timestamp last_check_in = 7;</code>
+     * <code>optional .google.protobuf.Timestamp last_check_in = 4;</code>
      */
     com.google.protobuf.TimestampOrBuilder getLastCheckInOrBuilder();
 
     /**
-     * <code>bool toggle_switch_on = 8;</code>
-     * @return The toggleSwitchOn.
-     */
-    boolean getToggleSwitchOn();
-
-    /**
-     * <code>bool safety_belts_on = 9;</code>
+     * <code>bool safety_belts_on = 5;</code>
      * @return The safetyBeltsOn.
      */
     boolean getSafetyBeltsOn();
@@ -116,8 +92,8 @@ public final class SensorDataOuterClass {
       super(builder);
     }
     private SensorData() {
-      make_ = "";
-      model_ = "";
+      makeAndModel_ = "";
+      fluxCapacitorReadings_ = emptyDoubleList();
     }
 
     @java.lang.Override
@@ -151,41 +127,41 @@ public final class SensorDataOuterClass {
             case 0:
               done = true;
               break;
-            case 8: {
-
-              id_ = input.readInt32();
-              break;
-            }
-            case 18: {
+            case 10: {
               java.lang.String s = input.readStringRequireUtf8();
               bitField0_ |= 0x00000001;
-              make_ = s;
+              makeAndModel_ = s;
               break;
             }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000002;
-              model_ = s;
-              break;
-            }
-            case 33: {
-
-              fluxCapacitorReading_ = input.readDouble();
-              break;
-            }
-            case 41: {
-
-              clockSkewPicoSeconds_ = input.readDouble();
-              break;
-            }
-            case 48: {
+            case 16: {
 
               destinationYear_ = input.readInt32();
               break;
             }
-            case 58: {
+            case 25: {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                fluxCapacitorReadings_ = newDoubleList();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              fluxCapacitorReadings_.addDouble(input.readDouble());
+              break;
+            }
+            case 26: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
+                fluxCapacitorReadings_ = newDoubleList();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                fluxCapacitorReadings_.addDouble(input.readDouble());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 34: {
               com.google.protobuf.Timestamp.Builder subBuilder = null;
-              if (lastCheckIn_ != null) {
+              if (((bitField0_ & 0x00000002) != 0)) {
                 subBuilder = lastCheckIn_.toBuilder();
               }
               lastCheckIn_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
@@ -193,15 +169,10 @@ public final class SensorDataOuterClass {
                 subBuilder.mergeFrom(lastCheckIn_);
                 lastCheckIn_ = subBuilder.buildPartial();
               }
-
+              bitField0_ |= 0x00000002;
               break;
             }
-            case 64: {
-
-              toggleSwitchOn_ = input.readBool();
-              break;
-            }
-            case 72: {
+            case 40: {
 
               safetyBeltsOn_ = input.readBool();
               break;
@@ -221,6 +192,9 @@ public final class SensorDataOuterClass {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+          fluxCapacitorReadings_.makeImmutable(); // C
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -239,135 +213,56 @@ public final class SensorDataOuterClass {
     }
 
     private int bitField0_;
-    public static final int ID_FIELD_NUMBER = 1;
-    private int id_;
+    public static final int MAKE_AND_MODEL_FIELD_NUMBER = 1;
+    private volatile java.lang.Object makeAndModel_;
     /**
-     * <code>int32 id = 1;</code>
-     * @return The id.
+     * <code>optional string make_and_model = 1;</code>
+     * @return Whether the makeAndModel field is set.
      */
     @java.lang.Override
-    public int getId() {
-      return id_;
-    }
-
-    public static final int MAKE_FIELD_NUMBER = 2;
-    private volatile java.lang.Object make_;
-    /**
-     * <code>optional string make = 2;</code>
-     * @return Whether the make field is set.
-     */
-    @java.lang.Override
-    public boolean hasMake() {
+    public boolean hasMakeAndModel() {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>optional string make = 2;</code>
-     * @return The make.
+     * <code>optional string make_and_model = 1;</code>
+     * @return The makeAndModel.
      */
     @java.lang.Override
-    public java.lang.String getMake() {
-      java.lang.Object ref = make_;
+    public java.lang.String getMakeAndModel() {
+      java.lang.Object ref = makeAndModel_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        make_ = s;
+        makeAndModel_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string make = 2;</code>
-     * @return The bytes for make.
+     * <code>optional string make_and_model = 1;</code>
+     * @return The bytes for makeAndModel.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getMakeBytes() {
-      java.lang.Object ref = make_;
+        getMakeAndModelBytes() {
+      java.lang.Object ref = makeAndModel_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        make_ = b;
+        makeAndModel_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int MODEL_FIELD_NUMBER = 3;
-    private volatile java.lang.Object model_;
-    /**
-     * <code>optional string model = 3;</code>
-     * @return Whether the model field is set.
-     */
-    @java.lang.Override
-    public boolean hasModel() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>optional string model = 3;</code>
-     * @return The model.
-     */
-    @java.lang.Override
-    public java.lang.String getModel() {
-      java.lang.Object ref = model_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        model_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string model = 3;</code>
-     * @return The bytes for model.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getModelBytes() {
-      java.lang.Object ref = model_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        model_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int FLUX_CAPACITOR_READING_FIELD_NUMBER = 4;
-    private double fluxCapacitorReading_;
-    /**
-     * <code>double flux_capacitor_reading = 4;</code>
-     * @return The fluxCapacitorReading.
-     */
-    @java.lang.Override
-    public double getFluxCapacitorReading() {
-      return fluxCapacitorReading_;
-    }
-
-    public static final int CLOCK_SKEW_PICO_SECONDS_FIELD_NUMBER = 5;
-    private double clockSkewPicoSeconds_;
-    /**
-     * <code>double clock_skew_pico_seconds = 5;</code>
-     * @return The clockSkewPicoSeconds.
-     */
-    @java.lang.Override
-    public double getClockSkewPicoSeconds() {
-      return clockSkewPicoSeconds_;
-    }
-
-    public static final int DESTINATION_YEAR_FIELD_NUMBER = 6;
+    public static final int DESTINATION_YEAR_FIELD_NUMBER = 2;
     private int destinationYear_;
     /**
-     * <code>int32 destination_year = 6;</code>
+     * <code>int32 destination_year = 2;</code>
      * @return The destinationYear.
      */
     @java.lang.Override
@@ -375,18 +270,46 @@ public final class SensorDataOuterClass {
       return destinationYear_;
     }
 
-    public static final int LAST_CHECK_IN_FIELD_NUMBER = 7;
+    public static final int FLUX_CAPACITOR_READINGS_FIELD_NUMBER = 3;
+    private com.google.protobuf.Internal.DoubleList fluxCapacitorReadings_;
+    /**
+     * <code>repeated double flux_capacitor_readings = 3;</code>
+     * @return A list containing the fluxCapacitorReadings.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Double>
+        getFluxCapacitorReadingsList() {
+      return fluxCapacitorReadings_;
+    }
+    /**
+     * <code>repeated double flux_capacitor_readings = 3;</code>
+     * @return The count of fluxCapacitorReadings.
+     */
+    public int getFluxCapacitorReadingsCount() {
+      return fluxCapacitorReadings_.size();
+    }
+    /**
+     * <code>repeated double flux_capacitor_readings = 3;</code>
+     * @param index The index of the element to return.
+     * @return The fluxCapacitorReadings at the given index.
+     */
+    public double getFluxCapacitorReadings(int index) {
+      return fluxCapacitorReadings_.getDouble(index);
+    }
+    private int fluxCapacitorReadingsMemoizedSerializedSize = -1;
+
+    public static final int LAST_CHECK_IN_FIELD_NUMBER = 4;
     private com.google.protobuf.Timestamp lastCheckIn_;
     /**
-     * <code>.google.protobuf.Timestamp last_check_in = 7;</code>
+     * <code>optional .google.protobuf.Timestamp last_check_in = 4;</code>
      * @return Whether the lastCheckIn field is set.
      */
     @java.lang.Override
     public boolean hasLastCheckIn() {
-      return lastCheckIn_ != null;
+      return ((bitField0_ & 0x00000002) != 0);
     }
     /**
-     * <code>.google.protobuf.Timestamp last_check_in = 7;</code>
+     * <code>optional .google.protobuf.Timestamp last_check_in = 4;</code>
      * @return The lastCheckIn.
      */
     @java.lang.Override
@@ -394,28 +317,17 @@ public final class SensorDataOuterClass {
       return lastCheckIn_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : lastCheckIn_;
     }
     /**
-     * <code>.google.protobuf.Timestamp last_check_in = 7;</code>
+     * <code>optional .google.protobuf.Timestamp last_check_in = 4;</code>
      */
     @java.lang.Override
     public com.google.protobuf.TimestampOrBuilder getLastCheckInOrBuilder() {
-      return getLastCheckIn();
+      return lastCheckIn_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : lastCheckIn_;
     }
 
-    public static final int TOGGLE_SWITCH_ON_FIELD_NUMBER = 8;
-    private boolean toggleSwitchOn_;
-    /**
-     * <code>bool toggle_switch_on = 8;</code>
-     * @return The toggleSwitchOn.
-     */
-    @java.lang.Override
-    public boolean getToggleSwitchOn() {
-      return toggleSwitchOn_;
-    }
-
-    public static final int SAFETY_BELTS_ON_FIELD_NUMBER = 9;
+    public static final int SAFETY_BELTS_ON_FIELD_NUMBER = 5;
     private boolean safetyBeltsOn_;
     /**
-     * <code>bool safety_belts_on = 9;</code>
+     * <code>bool safety_belts_on = 5;</code>
      * @return The safetyBeltsOn.
      */
     @java.lang.Override
@@ -437,32 +349,25 @@ public final class SensorDataOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (id_ != 0) {
-        output.writeInt32(1, id_);
-      }
+      getSerializedSize();
       if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, make_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, model_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(fluxCapacitorReading_) != 0) {
-        output.writeDouble(4, fluxCapacitorReading_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(clockSkewPicoSeconds_) != 0) {
-        output.writeDouble(5, clockSkewPicoSeconds_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, makeAndModel_);
       }
       if (destinationYear_ != 0) {
-        output.writeInt32(6, destinationYear_);
+        output.writeInt32(2, destinationYear_);
       }
-      if (lastCheckIn_ != null) {
-        output.writeMessage(7, getLastCheckIn());
+      if (getFluxCapacitorReadingsList().size() > 0) {
+        output.writeUInt32NoTag(26);
+        output.writeUInt32NoTag(fluxCapacitorReadingsMemoizedSerializedSize);
       }
-      if (toggleSwitchOn_ != false) {
-        output.writeBool(8, toggleSwitchOn_);
+      for (int i = 0; i < fluxCapacitorReadings_.size(); i++) {
+        output.writeDoubleNoTag(fluxCapacitorReadings_.getDouble(i));
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeMessage(4, getLastCheckIn());
       }
       if (safetyBeltsOn_ != false) {
-        output.writeBool(9, safetyBeltsOn_);
+        output.writeBool(5, safetyBeltsOn_);
       }
       unknownFields.writeTo(output);
     }
@@ -473,39 +378,31 @@ public final class SensorDataOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (id_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, id_);
-      }
       if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, make_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, model_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(fluxCapacitorReading_) != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(4, fluxCapacitorReading_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(clockSkewPicoSeconds_) != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(5, clockSkewPicoSeconds_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, makeAndModel_);
       }
       if (destinationYear_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, destinationYear_);
+          .computeInt32Size(2, destinationYear_);
       }
-      if (lastCheckIn_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, getLastCheckIn());
+      {
+        int dataSize = 0;
+        dataSize = 8 * getFluxCapacitorReadingsList().size();
+        size += dataSize;
+        if (!getFluxCapacitorReadingsList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        fluxCapacitorReadingsMemoizedSerializedSize = dataSize;
       }
-      if (toggleSwitchOn_ != false) {
+      if (((bitField0_ & 0x00000002) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(8, toggleSwitchOn_);
+          .computeMessageSize(4, getLastCheckIn());
       }
       if (safetyBeltsOn_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(9, safetyBeltsOn_);
+          .computeBoolSize(5, safetyBeltsOn_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -522,33 +419,20 @@ public final class SensorDataOuterClass {
       }
       app.model.objects.generated.SensorDataOuterClass.SensorData other = (app.model.objects.generated.SensorDataOuterClass.SensorData) obj;
 
-      if (getId()
-          != other.getId()) return false;
-      if (hasMake() != other.hasMake()) return false;
-      if (hasMake()) {
-        if (!getMake()
-            .equals(other.getMake())) return false;
+      if (hasMakeAndModel() != other.hasMakeAndModel()) return false;
+      if (hasMakeAndModel()) {
+        if (!getMakeAndModel()
+            .equals(other.getMakeAndModel())) return false;
       }
-      if (hasModel() != other.hasModel()) return false;
-      if (hasModel()) {
-        if (!getModel()
-            .equals(other.getModel())) return false;
-      }
-      if (java.lang.Double.doubleToLongBits(getFluxCapacitorReading())
-          != java.lang.Double.doubleToLongBits(
-              other.getFluxCapacitorReading())) return false;
-      if (java.lang.Double.doubleToLongBits(getClockSkewPicoSeconds())
-          != java.lang.Double.doubleToLongBits(
-              other.getClockSkewPicoSeconds())) return false;
       if (getDestinationYear()
           != other.getDestinationYear()) return false;
+      if (!getFluxCapacitorReadingsList()
+          .equals(other.getFluxCapacitorReadingsList())) return false;
       if (hasLastCheckIn() != other.hasLastCheckIn()) return false;
       if (hasLastCheckIn()) {
         if (!getLastCheckIn()
             .equals(other.getLastCheckIn())) return false;
       }
-      if (getToggleSwitchOn()
-          != other.getToggleSwitchOn()) return false;
       if (getSafetyBeltsOn()
           != other.getSafetyBeltsOn()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -562,31 +446,20 @@ public final class SensorDataOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getId();
-      if (hasMake()) {
-        hash = (37 * hash) + MAKE_FIELD_NUMBER;
-        hash = (53 * hash) + getMake().hashCode();
+      if (hasMakeAndModel()) {
+        hash = (37 * hash) + MAKE_AND_MODEL_FIELD_NUMBER;
+        hash = (53 * hash) + getMakeAndModel().hashCode();
       }
-      if (hasModel()) {
-        hash = (37 * hash) + MODEL_FIELD_NUMBER;
-        hash = (53 * hash) + getModel().hashCode();
-      }
-      hash = (37 * hash) + FLUX_CAPACITOR_READING_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getFluxCapacitorReading()));
-      hash = (37 * hash) + CLOCK_SKEW_PICO_SECONDS_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getClockSkewPicoSeconds()));
       hash = (37 * hash) + DESTINATION_YEAR_FIELD_NUMBER;
       hash = (53 * hash) + getDestinationYear();
+      if (getFluxCapacitorReadingsCount() > 0) {
+        hash = (37 * hash) + FLUX_CAPACITOR_READINGS_FIELD_NUMBER;
+        hash = (53 * hash) + getFluxCapacitorReadingsList().hashCode();
+      }
       if (hasLastCheckIn()) {
         hash = (37 * hash) + LAST_CHECK_IN_FIELD_NUMBER;
         hash = (53 * hash) + getLastCheckIn().hashCode();
       }
-      hash = (37 * hash) + TOGGLE_SWITCH_ON_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getToggleSwitchOn());
       hash = (37 * hash) + SAFETY_BELTS_ON_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getSafetyBeltsOn());
@@ -718,31 +591,24 @@ public final class SensorDataOuterClass {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getLastCheckInFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        id_ = 0;
-
-        make_ = "";
+        makeAndModel_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        model_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        fluxCapacitorReading_ = 0D;
-
-        clockSkewPicoSeconds_ = 0D;
-
         destinationYear_ = 0;
 
+        fluxCapacitorReadings_ = emptyDoubleList();
+        bitField0_ = (bitField0_ & ~0x00000002);
         if (lastCheckInBuilder_ == null) {
           lastCheckIn_ = null;
         } else {
-          lastCheckIn_ = null;
-          lastCheckInBuilder_ = null;
+          lastCheckInBuilder_.clear();
         }
-        toggleSwitchOn_ = false;
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         safetyBeltsOn_ = false;
 
         return this;
@@ -773,24 +639,24 @@ public final class SensorDataOuterClass {
         app.model.objects.generated.SensorDataOuterClass.SensorData result = new app.model.objects.generated.SensorDataOuterClass.SensorData(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
-        result.id_ = id_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.make_ = make_;
-        if (((from_bitField0_ & 0x00000002) != 0)) {
+        result.makeAndModel_ = makeAndModel_;
+        result.destinationYear_ = destinationYear_;
+        if (((bitField0_ & 0x00000002) != 0)) {
+          fluxCapacitorReadings_.makeImmutable();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.fluxCapacitorReadings_ = fluxCapacitorReadings_;
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          if (lastCheckInBuilder_ == null) {
+            result.lastCheckIn_ = lastCheckIn_;
+          } else {
+            result.lastCheckIn_ = lastCheckInBuilder_.build();
+          }
           to_bitField0_ |= 0x00000002;
         }
-        result.model_ = model_;
-        result.fluxCapacitorReading_ = fluxCapacitorReading_;
-        result.clockSkewPicoSeconds_ = clockSkewPicoSeconds_;
-        result.destinationYear_ = destinationYear_;
-        if (lastCheckInBuilder_ == null) {
-          result.lastCheckIn_ = lastCheckIn_;
-        } else {
-          result.lastCheckIn_ = lastCheckInBuilder_.build();
-        }
-        result.toggleSwitchOn_ = toggleSwitchOn_;
         result.safetyBeltsOn_ = safetyBeltsOn_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -841,33 +707,26 @@ public final class SensorDataOuterClass {
 
       public Builder mergeFrom(app.model.objects.generated.SensorDataOuterClass.SensorData other) {
         if (other == app.model.objects.generated.SensorDataOuterClass.SensorData.getDefaultInstance()) return this;
-        if (other.getId() != 0) {
-          setId(other.getId());
-        }
-        if (other.hasMake()) {
+        if (other.hasMakeAndModel()) {
           bitField0_ |= 0x00000001;
-          make_ = other.make_;
+          makeAndModel_ = other.makeAndModel_;
           onChanged();
-        }
-        if (other.hasModel()) {
-          bitField0_ |= 0x00000002;
-          model_ = other.model_;
-          onChanged();
-        }
-        if (other.getFluxCapacitorReading() != 0D) {
-          setFluxCapacitorReading(other.getFluxCapacitorReading());
-        }
-        if (other.getClockSkewPicoSeconds() != 0D) {
-          setClockSkewPicoSeconds(other.getClockSkewPicoSeconds());
         }
         if (other.getDestinationYear() != 0) {
           setDestinationYear(other.getDestinationYear());
         }
+        if (!other.fluxCapacitorReadings_.isEmpty()) {
+          if (fluxCapacitorReadings_.isEmpty()) {
+            fluxCapacitorReadings_ = other.fluxCapacitorReadings_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureFluxCapacitorReadingsIsMutable();
+            fluxCapacitorReadings_.addAll(other.fluxCapacitorReadings_);
+          }
+          onChanged();
+        }
         if (other.hasLastCheckIn()) {
           mergeLastCheckIn(other.getLastCheckIn());
-        }
-        if (other.getToggleSwitchOn() != false) {
-          setToggleSwitchOn(other.getToggleSwitchOn());
         }
         if (other.getSafetyBeltsOn() != false) {
           setSafetyBeltsOn(other.getSafetyBeltsOn());
@@ -902,268 +761,92 @@ public final class SensorDataOuterClass {
       }
       private int bitField0_;
 
-      private int id_ ;
+      private java.lang.Object makeAndModel_ = "";
       /**
-       * <code>int32 id = 1;</code>
-       * @return The id.
+       * <code>optional string make_and_model = 1;</code>
+       * @return Whether the makeAndModel field is set.
        */
-      @java.lang.Override
-      public int getId() {
-        return id_;
-      }
-      /**
-       * <code>int32 id = 1;</code>
-       * @param value The id to set.
-       * @return This builder for chaining.
-       */
-      public Builder setId(int value) {
-        
-        id_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 id = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearId() {
-        
-        id_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object make_ = "";
-      /**
-       * <code>optional string make = 2;</code>
-       * @return Whether the make field is set.
-       */
-      public boolean hasMake() {
+      public boolean hasMakeAndModel() {
         return ((bitField0_ & 0x00000001) != 0);
       }
       /**
-       * <code>optional string make = 2;</code>
-       * @return The make.
+       * <code>optional string make_and_model = 1;</code>
+       * @return The makeAndModel.
        */
-      public java.lang.String getMake() {
-        java.lang.Object ref = make_;
+      public java.lang.String getMakeAndModel() {
+        java.lang.Object ref = makeAndModel_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          make_ = s;
+          makeAndModel_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string make = 2;</code>
-       * @return The bytes for make.
+       * <code>optional string make_and_model = 1;</code>
+       * @return The bytes for makeAndModel.
        */
       public com.google.protobuf.ByteString
-          getMakeBytes() {
-        java.lang.Object ref = make_;
+          getMakeAndModelBytes() {
+        java.lang.Object ref = makeAndModel_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          make_ = b;
+          makeAndModel_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>optional string make = 2;</code>
-       * @param value The make to set.
+       * <code>optional string make_and_model = 1;</code>
+       * @param value The makeAndModel to set.
        * @return This builder for chaining.
        */
-      public Builder setMake(
+      public Builder setMakeAndModel(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000001;
-        make_ = value;
+        makeAndModel_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string make = 2;</code>
+       * <code>optional string make_and_model = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearMake() {
+      public Builder clearMakeAndModel() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        make_ = getDefaultInstance().getMake();
+        makeAndModel_ = getDefaultInstance().getMakeAndModel();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string make = 2;</code>
-       * @param value The bytes for make to set.
+       * <code>optional string make_and_model = 1;</code>
+       * @param value The bytes for makeAndModel to set.
        * @return This builder for chaining.
        */
-      public Builder setMakeBytes(
+      public Builder setMakeAndModelBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         bitField0_ |= 0x00000001;
-        make_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object model_ = "";
-      /**
-       * <code>optional string model = 3;</code>
-       * @return Whether the model field is set.
-       */
-      public boolean hasModel() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>optional string model = 3;</code>
-       * @return The model.
-       */
-      public java.lang.String getModel() {
-        java.lang.Object ref = model_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          model_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string model = 3;</code>
-       * @return The bytes for model.
-       */
-      public com.google.protobuf.ByteString
-          getModelBytes() {
-        java.lang.Object ref = model_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          model_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string model = 3;</code>
-       * @param value The model to set.
-       * @return This builder for chaining.
-       */
-      public Builder setModel(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        model_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string model = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearModel() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        model_ = getDefaultInstance().getModel();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string model = 3;</code>
-       * @param value The bytes for model to set.
-       * @return This builder for chaining.
-       */
-      public Builder setModelBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        bitField0_ |= 0x00000002;
-        model_ = value;
-        onChanged();
-        return this;
-      }
-
-      private double fluxCapacitorReading_ ;
-      /**
-       * <code>double flux_capacitor_reading = 4;</code>
-       * @return The fluxCapacitorReading.
-       */
-      @java.lang.Override
-      public double getFluxCapacitorReading() {
-        return fluxCapacitorReading_;
-      }
-      /**
-       * <code>double flux_capacitor_reading = 4;</code>
-       * @param value The fluxCapacitorReading to set.
-       * @return This builder for chaining.
-       */
-      public Builder setFluxCapacitorReading(double value) {
-        
-        fluxCapacitorReading_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double flux_capacitor_reading = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearFluxCapacitorReading() {
-        
-        fluxCapacitorReading_ = 0D;
-        onChanged();
-        return this;
-      }
-
-      private double clockSkewPicoSeconds_ ;
-      /**
-       * <code>double clock_skew_pico_seconds = 5;</code>
-       * @return The clockSkewPicoSeconds.
-       */
-      @java.lang.Override
-      public double getClockSkewPicoSeconds() {
-        return clockSkewPicoSeconds_;
-      }
-      /**
-       * <code>double clock_skew_pico_seconds = 5;</code>
-       * @param value The clockSkewPicoSeconds to set.
-       * @return This builder for chaining.
-       */
-      public Builder setClockSkewPicoSeconds(double value) {
-        
-        clockSkewPicoSeconds_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double clock_skew_pico_seconds = 5;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearClockSkewPicoSeconds() {
-        
-        clockSkewPicoSeconds_ = 0D;
+        makeAndModel_ = value;
         onChanged();
         return this;
       }
 
       private int destinationYear_ ;
       /**
-       * <code>int32 destination_year = 6;</code>
+       * <code>int32 destination_year = 2;</code>
        * @return The destinationYear.
        */
       @java.lang.Override
@@ -1171,7 +854,7 @@ public final class SensorDataOuterClass {
         return destinationYear_;
       }
       /**
-       * <code>int32 destination_year = 6;</code>
+       * <code>int32 destination_year = 2;</code>
        * @param value The destinationYear to set.
        * @return This builder for chaining.
        */
@@ -1182,7 +865,7 @@ public final class SensorDataOuterClass {
         return this;
       }
       /**
-       * <code>int32 destination_year = 6;</code>
+       * <code>int32 destination_year = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearDestinationYear() {
@@ -1192,18 +875,97 @@ public final class SensorDataOuterClass {
         return this;
       }
 
+      private com.google.protobuf.Internal.DoubleList fluxCapacitorReadings_ = emptyDoubleList();
+      private void ensureFluxCapacitorReadingsIsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          fluxCapacitorReadings_ = mutableCopy(fluxCapacitorReadings_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+      /**
+       * <code>repeated double flux_capacitor_readings = 3;</code>
+       * @return A list containing the fluxCapacitorReadings.
+       */
+      public java.util.List<java.lang.Double>
+          getFluxCapacitorReadingsList() {
+        return ((bitField0_ & 0x00000002) != 0) ?
+                 java.util.Collections.unmodifiableList(fluxCapacitorReadings_) : fluxCapacitorReadings_;
+      }
+      /**
+       * <code>repeated double flux_capacitor_readings = 3;</code>
+       * @return The count of fluxCapacitorReadings.
+       */
+      public int getFluxCapacitorReadingsCount() {
+        return fluxCapacitorReadings_.size();
+      }
+      /**
+       * <code>repeated double flux_capacitor_readings = 3;</code>
+       * @param index The index of the element to return.
+       * @return The fluxCapacitorReadings at the given index.
+       */
+      public double getFluxCapacitorReadings(int index) {
+        return fluxCapacitorReadings_.getDouble(index);
+      }
+      /**
+       * <code>repeated double flux_capacitor_readings = 3;</code>
+       * @param index The index to set the value at.
+       * @param value The fluxCapacitorReadings to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFluxCapacitorReadings(
+          int index, double value) {
+        ensureFluxCapacitorReadingsIsMutable();
+        fluxCapacitorReadings_.setDouble(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated double flux_capacitor_readings = 3;</code>
+       * @param value The fluxCapacitorReadings to add.
+       * @return This builder for chaining.
+       */
+      public Builder addFluxCapacitorReadings(double value) {
+        ensureFluxCapacitorReadingsIsMutable();
+        fluxCapacitorReadings_.addDouble(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated double flux_capacitor_readings = 3;</code>
+       * @param values The fluxCapacitorReadings to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllFluxCapacitorReadings(
+          java.lang.Iterable<? extends java.lang.Double> values) {
+        ensureFluxCapacitorReadingsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, fluxCapacitorReadings_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated double flux_capacitor_readings = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFluxCapacitorReadings() {
+        fluxCapacitorReadings_ = emptyDoubleList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+
       private com.google.protobuf.Timestamp lastCheckIn_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> lastCheckInBuilder_;
       /**
-       * <code>.google.protobuf.Timestamp last_check_in = 7;</code>
+       * <code>optional .google.protobuf.Timestamp last_check_in = 4;</code>
        * @return Whether the lastCheckIn field is set.
        */
       public boolean hasLastCheckIn() {
-        return lastCheckInBuilder_ != null || lastCheckIn_ != null;
+        return ((bitField0_ & 0x00000004) != 0);
       }
       /**
-       * <code>.google.protobuf.Timestamp last_check_in = 7;</code>
+       * <code>optional .google.protobuf.Timestamp last_check_in = 4;</code>
        * @return The lastCheckIn.
        */
       public com.google.protobuf.Timestamp getLastCheckIn() {
@@ -1214,7 +976,7 @@ public final class SensorDataOuterClass {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp last_check_in = 7;</code>
+       * <code>optional .google.protobuf.Timestamp last_check_in = 4;</code>
        */
       public Builder setLastCheckIn(com.google.protobuf.Timestamp value) {
         if (lastCheckInBuilder_ == null) {
@@ -1226,11 +988,11 @@ public final class SensorDataOuterClass {
         } else {
           lastCheckInBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp last_check_in = 7;</code>
+       * <code>optional .google.protobuf.Timestamp last_check_in = 4;</code>
        */
       public Builder setLastCheckIn(
           com.google.protobuf.Timestamp.Builder builderForValue) {
@@ -1240,15 +1002,17 @@ public final class SensorDataOuterClass {
         } else {
           lastCheckInBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp last_check_in = 7;</code>
+       * <code>optional .google.protobuf.Timestamp last_check_in = 4;</code>
        */
       public Builder mergeLastCheckIn(com.google.protobuf.Timestamp value) {
         if (lastCheckInBuilder_ == null) {
-          if (lastCheckIn_ != null) {
+          if (((bitField0_ & 0x00000004) != 0) &&
+              lastCheckIn_ != null &&
+              lastCheckIn_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
             lastCheckIn_ =
               com.google.protobuf.Timestamp.newBuilder(lastCheckIn_).mergeFrom(value).buildPartial();
           } else {
@@ -1258,33 +1022,32 @@ public final class SensorDataOuterClass {
         } else {
           lastCheckInBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp last_check_in = 7;</code>
+       * <code>optional .google.protobuf.Timestamp last_check_in = 4;</code>
        */
       public Builder clearLastCheckIn() {
         if (lastCheckInBuilder_ == null) {
           lastCheckIn_ = null;
           onChanged();
         } else {
-          lastCheckIn_ = null;
-          lastCheckInBuilder_ = null;
+          lastCheckInBuilder_.clear();
         }
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp last_check_in = 7;</code>
+       * <code>optional .google.protobuf.Timestamp last_check_in = 4;</code>
        */
       public com.google.protobuf.Timestamp.Builder getLastCheckInBuilder() {
-        
+        bitField0_ |= 0x00000004;
         onChanged();
         return getLastCheckInFieldBuilder().getBuilder();
       }
       /**
-       * <code>.google.protobuf.Timestamp last_check_in = 7;</code>
+       * <code>optional .google.protobuf.Timestamp last_check_in = 4;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getLastCheckInOrBuilder() {
         if (lastCheckInBuilder_ != null) {
@@ -1295,7 +1058,7 @@ public final class SensorDataOuterClass {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp last_check_in = 7;</code>
+       * <code>optional .google.protobuf.Timestamp last_check_in = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
@@ -1311,40 +1074,9 @@ public final class SensorDataOuterClass {
         return lastCheckInBuilder_;
       }
 
-      private boolean toggleSwitchOn_ ;
-      /**
-       * <code>bool toggle_switch_on = 8;</code>
-       * @return The toggleSwitchOn.
-       */
-      @java.lang.Override
-      public boolean getToggleSwitchOn() {
-        return toggleSwitchOn_;
-      }
-      /**
-       * <code>bool toggle_switch_on = 8;</code>
-       * @param value The toggleSwitchOn to set.
-       * @return This builder for chaining.
-       */
-      public Builder setToggleSwitchOn(boolean value) {
-        
-        toggleSwitchOn_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool toggle_switch_on = 8;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearToggleSwitchOn() {
-        
-        toggleSwitchOn_ = false;
-        onChanged();
-        return this;
-      }
-
       private boolean safetyBeltsOn_ ;
       /**
-       * <code>bool safety_belts_on = 9;</code>
+       * <code>bool safety_belts_on = 5;</code>
        * @return The safetyBeltsOn.
        */
       @java.lang.Override
@@ -1352,7 +1084,7 @@ public final class SensorDataOuterClass {
         return safetyBeltsOn_;
       }
       /**
-       * <code>bool safety_belts_on = 9;</code>
+       * <code>bool safety_belts_on = 5;</code>
        * @param value The safetyBeltsOn to set.
        * @return This builder for chaining.
        */
@@ -1363,7 +1095,7 @@ public final class SensorDataOuterClass {
         return this;
       }
       /**
-       * <code>bool safety_belts_on = 9;</code>
+       * <code>bool safety_belts_on = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearSafetyBeltsOn() {
@@ -1441,14 +1173,12 @@ public final class SensorDataOuterClass {
     java.lang.String[] descriptorData = {
       "\n\020SensorData.proto\022\033app.model.objects.ge" +
       "nerated\032\037google/protobuf/timestamp.proto" +
-      "\"\223\002\n\nSensorData\022\n\n\002id\030\001 \001(\005\022\021\n\004make\030\002 \001(" +
-      "\tH\000\210\001\001\022\022\n\005model\030\003 \001(\tH\001\210\001\001\022\036\n\026flux_capac" +
-      "itor_reading\030\004 \001(\001\022\037\n\027clock_skew_pico_se" +
-      "conds\030\005 \001(\001\022\030\n\020destination_year\030\006 \001(\005\0221\n" +
-      "\rlast_check_in\030\007 \001(\0132\032.google.protobuf.T" +
-      "imestamp\022\030\n\020toggle_switch_on\030\010 \001(\010\022\027\n\017sa" +
-      "fety_belts_on\030\t \001(\010B\007\n\005_makeB\010\n\006_modelb\006" +
-      "proto3"
+      "\"\332\001\n\nSensorData\022\033\n\016make_and_model\030\001 \001(\tH" +
+      "\000\210\001\001\022\030\n\020destination_year\030\002 \001(\005\022\037\n\027flux_c" +
+      "apacitor_readings\030\003 \003(\001\0226\n\rlast_check_in" +
+      "\030\004 \001(\0132\032.google.protobuf.TimestampH\001\210\001\001\022" +
+      "\027\n\017safety_belts_on\030\005 \001(\010B\021\n\017_make_and_mo" +
+      "delB\020\n\016_last_check_inb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1460,7 +1190,7 @@ public final class SensorDataOuterClass {
     internal_static_app_model_objects_generated_SensorData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_app_model_objects_generated_SensorData_descriptor,
-        new java.lang.String[] { "Id", "Make", "Model", "FluxCapacitorReading", "ClockSkewPicoSeconds", "DestinationYear", "LastCheckIn", "ToggleSwitchOn", "SafetyBeltsOn", "Make", "Model", });
+        new java.lang.String[] { "MakeAndModel", "DestinationYear", "FluxCapacitorReadings", "LastCheckIn", "SafetyBeltsOn", "MakeAndModel", "LastCheckIn", });
     com.google.protobuf.TimestampProto.getDescriptor();
   }
 

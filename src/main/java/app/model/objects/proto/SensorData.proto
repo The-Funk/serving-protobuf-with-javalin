@@ -5,16 +5,12 @@ package app.model.objects.generated;
 import "google/protobuf/timestamp.proto";
 
 // proto standard says field names should be lower_snake_case
-// except enum values which should be SCREAMING_SNAKE_CASE
+// except enum values (not covered here) which should be SCREAMING_SNAKE_CASE
 
 message SensorData {
-  int32 id = 1;
-  optional string make = 2;
-  optional string model = 3;
-  double flux_capacitor_reading = 4;
-  double clock_skew_pico_seconds = 5;
-  int32 destination_year = 6;
-  google.protobuf.Timestamp last_check_in = 7;
-  bool toggle_switch_on = 8;
-  bool safety_belts_on = 9;
+  optional string make_and_model = 1;
+  int32 destination_year = 2;
+  repeated double flux_capacitor_readings = 3;
+  optional google.protobuf.Timestamp last_check_in = 4;
+  bool safety_belts_on = 5;
 }
