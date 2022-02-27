@@ -2,19 +2,23 @@
 
 ## Description
 
-This is a community example of serving Protobuf over a REST API with Javalin. The project contains a pair of custom build scripts to help automate the protocol buffer compilation process.
+This is a community example of serving Protobuf over a REST API with Javalin. The project uses the Gradle build system and the official Google gradle plugin for protobuf generation. If Grade isn't your thing is also contains a pair of custom build scripts to help automate the protocol buffer compilation process to some degree.
 
 ## Getting Started
 
-To start, clone or fork this repository. Make sure both git and protoc are installed on target system.
+To start, clone or fork this repository. You could also download just the source if you desire. If using the build scripts, make sure both git and protoc are installed on the target system and in your path.
 
 ### Dependencies
 
-* Developing on MS Windows or Linux**
-* Using git for version control system
-* protoc compiler and git both installed and in path
+```
+dependencies {
+    implementation 'org.slf4j:slf4j-simple:1.8.0-beta4'
+    implementation 'io.javalin:javalin:4.3.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.1'
+    implementation 'com.google.protobuf:protobuf-java:3.19.4'
+}
 
-** Tested on a Debian based distro
+```
 
 ## Authors
 
@@ -26,4 +30,5 @@ This project is licensed under the zero-condition "Unlicense". Use it however yo
 
 ## Acknowledgments
 
-Special thanks to David Åse (tipsy) and the contributors to the always awesome [javalin web framework](https://github.com/tipsy/javalin)
+* Special thanks to David Åse (tipsy) and the contributors to the always awesome [javalin web framework](https://github.com/tipsy/javalin)
+* Thank you to Bone Man from the official [Javalin Discord server](https://discord.com/invite/sgak4e5NKv) for the help with learning Gradle!
