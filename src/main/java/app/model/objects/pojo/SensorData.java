@@ -2,12 +2,13 @@ package app.model.objects.pojo;
 
 import app.model.objects.generated.SensorDataOuterClass;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
 import static app.model.mappers.BaseMapper.sqltimeToProtoTime;
 
-public class SensorData implements Bufferable<SensorDataOuterClass.SensorData>{
+public class SensorData implements Serializable, Bufferable<SensorDataOuterClass.SensorData>{
 
     private String makeAndModel;
     private int destinationYear;
