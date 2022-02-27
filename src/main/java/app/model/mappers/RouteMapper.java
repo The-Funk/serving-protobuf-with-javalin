@@ -1,5 +1,6 @@
 package app.model.mappers;
 
+
 import app.model.objects.pojo.SensorData;
 
 public class RouteMapper {
