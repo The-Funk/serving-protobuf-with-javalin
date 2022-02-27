@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a community example of serving Protobuf over a REST API with Javalin. The project uses the Gradle build system and the official Google Gradle plugin for Protobuf generation. If Grade isn't your thing, the project also contains a pair of custom build scripts to help automate the protocol buffer compilation process to some degree.
+This is a community example of serving Protobuf over a REST API with Javalin. The project uses the Gradle build system and the official Google Gradle plugin for Protobuf generation. If Gradle isn't your thing, the project also contains a pair of custom build scripts to help automate the protocol buffer compilation process to some degree.
 
 ## Getting Started
 
