@@ -13,8 +13,8 @@ To start, clone or fork this repository. You could also download just the source
 ```
 dependencies {
     implementation 'org.slf4j:slf4j-simple:1.8.0-beta4'
-    implementation 'io.javalin:javalin:4.3.0'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.1'
+    implementation 'io.javalin:javalin:4.4.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.2'
     implementation 'com.google.protobuf:protobuf-java:3.19.4'
 }
 
