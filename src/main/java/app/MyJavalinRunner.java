@@ -17,37 +17,30 @@ public class MyJavalinRunner {
         app.get("/pbuf", handleServeProtobuf);
         app.get("/json", handleServeJSON);
 
+        app.exception(Exception.class, (e, ctx) -> {
+            e.printStackTrace();
+            ctx.status(500);
+        });
+
     }
 
     public static Handler handleServeProtobuf = ctx -> {
-        try {
-            // Here's where you'd get your SensorData from your DB or device, etc.
-            FakeDao dao = new FakeDao();
-            SensorData sData = dao.getSensorDataFromVehicleDB();
+        // Here's where you'd get your SensorData from your DB or device, etc.
+        FakeDao dao = new FakeDao();
+        SensorData sData = dao.getSensorDataFromVehicleDB();
 
-            ctx.status(200);
-            ctx.contentType("application/x-protobuf");
-            ctx.result(getSensorDataResponse(sData));
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            ctx.status(500);
-        }
+        ctx.status(200);
+        ctx.contentType("application/x-protobuf");
+        ctx.result(getSensorDataResponse(sData));
     };
 
     public static Handler handleServeJSON = ctx -> {
-        try {
-            // Here's where you'd get your SensorData from your DB or device, etc.
-            FakeDao dao = new FakeDao();
-            SensorData sData = dao.getSensorDataFromVehicleDB();
+        // Here's where you'd get your SensorData from your DB or device, etc.
+        FakeDao dao = new FakeDao();
+        SensorData sData = dao.getSensorDataFromVehicleDB();
 
-            ctx.status(200);
-            ctx.json(sData);
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            ctx.status(500);
-        }
+        ctx.status(200);
+        ctx.json(sData);
     };
 
 }
