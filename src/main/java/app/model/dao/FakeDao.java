@@ -1,6 +1,6 @@
 package app.model.dao;
 
-import app.model.objects.pojo.SensorData;
+import app.model.objects.SensorData;
 
 import java.sql.Timestamp;
 import java.util.List;

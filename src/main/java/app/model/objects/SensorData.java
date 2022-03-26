@@ -1,4 +1,4 @@
-package app.model.objects.pojo;
+package app.model.objects;
 
 import protos.SensorDataOuterClass;
 

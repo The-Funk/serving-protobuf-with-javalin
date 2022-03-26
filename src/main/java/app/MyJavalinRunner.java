@@ -1,7 +1,7 @@
 package app;
 
 import app.model.dao.FakeDao;
-import app.model.objects.pojo.SensorData;
+import app.model.objects.SensorData;
 import io.javalin.Javalin;
 import io.javalin.core.JavalinConfig;
 import io.javalin.http.Handler;
