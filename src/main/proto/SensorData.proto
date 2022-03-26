@@ -1,6 +1,6 @@
 syntax = "proto3";
 // The package directive (when generating Java src files) tells protoc where to store the generated Java files
-package app.model.objects.generated;
+package protos;
 
 import "google/protobuf/timestamp.proto";
 

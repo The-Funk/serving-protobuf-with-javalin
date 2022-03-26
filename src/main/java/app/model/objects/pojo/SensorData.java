@@ -1,6 +1,6 @@
 package app.model.objects.pojo;
 
-import app.model.objects.generated.SensorDataOuterClass;
+import protos.SensorDataOuterClass;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -33,8 +33,8 @@ public class SensorData implements Serializable, Bufferable<SensorDataOuterClass
 
 
     @Override
-    public SensorDataOuterClass.SensorData toBuffer() {
-        SensorDataOuterClass.SensorData.Builder builder = SensorDataOuterClass.SensorData.newBuilder();
+    public protos.SensorDataOuterClass.SensorData toBuffer() {
+        protos.SensorDataOuterClass.SensorData.Builder builder = protos.SensorDataOuterClass.SensorData.newBuilder();
 
         // Set all non-nullable values first
         builder.addAllFluxCapacitorReadings(fluxCapacitorReadings)

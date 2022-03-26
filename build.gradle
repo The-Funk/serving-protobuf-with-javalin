@@ -22,7 +22,7 @@ repositories {
 dependencies {
     implementation 'org.slf4j:slf4j-simple:1.8.0-beta4'
     implementation 'io.javalin:javalin:4.3.0'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.2'
     implementation 'com.google.protobuf:protobuf-java:3.19.4'
 }
 
@@ -32,13 +32,7 @@ sourceSets {
             srcDir "src/main/proto"
         }
         java {
-            srcDir "src/main/java"
-        }
-    }
-    test {
-        proto {
-            // In addition to the default 'src/test/proto'
-            srcDir "src/test/protocolbuffers"
+            srcDirs "src/main/java", "gen/main/java"
         }
     }
 }
@@ -46,19 +40,19 @@ sourceSets {
 group = 'tech.gmork'
 version = '1.0-SNAPSHOT'
 description = 'serving-protobuf-with-javalin'
-java.sourceCompatibility = JavaVersion.VERSION_16
 
 rootProject.tasks.named("processResources") {
     duplicatesStrategy = 'include'
 }
 
 protobuf {
-    generatedFilesBaseDir = "$projectDir/src"
     // Configure the protoc executable
     protoc {
         // Download from repositories
         artifact = 'com.google.protobuf:protoc:3.19.4'
     }
+
+    generateProtoTasks.generatedFilesBaseDir = 'gen'
 
     generateProtoTasks {
         // all() returns the collection of all protoc tasks
@@ -66,7 +60,6 @@ protobuf {
             // Here you can configure the task
         }
 
-        // (Java only) returns tasks for a sourceSet
         ofSourceSet('main')
 
     }
